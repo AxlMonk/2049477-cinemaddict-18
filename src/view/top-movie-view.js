@@ -1,6 +1,6 @@
 import { createElement } from '../render.js';
 
-const MovieInformationPopupTemplate = () => (
+const createMovieInformationPopupTemplate = () => (
   `<section class="films-list films-list--extra">
 <h2 class="films-list__title">Top rated</h2>
 
@@ -31,13 +31,13 @@ const MovieInformationPopupTemplate = () => (
 );
 
 export default class TopMovieView {
-  gerTemplate() {
-    return MovieInformationPopupTemplate();
+  getTemplate() {
+    return createMovieInformationPopupTemplate();
   }
 
   getElement() {
     if(!this.element) {
-      this.element = createElement(this.gerTemplate());
+      this.element = createElement(this.getTemplate());
     }
 
     return this.element;

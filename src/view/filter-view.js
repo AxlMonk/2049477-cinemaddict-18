@@ -1,6 +1,6 @@
 import { createElement } from '../render.js';
 
-const filterTemplate = () => (
+const createfilterTemplate = () => (
   `<ul class="sort">
 <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
 <li><a href="#" class="sort__button">Sort by date</a></li>
@@ -9,13 +9,13 @@ const filterTemplate = () => (
 );
 
 export default class FilterView {
-  gerTemplate() {
-    return filterTemplate();
+  getTemplate() {
+    return createfilterTemplate();
   }
 
   getElement() {
     if(!this.element) {
-      this.element = createElement(this.gerTemplate());
+      this.element = createElement(this.getTemplate());
     }
 
     return this.element;

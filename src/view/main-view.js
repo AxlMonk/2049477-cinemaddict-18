@@ -1,15 +1,15 @@
 import { createElement } from '../render.js';
 
-const movieTemplate = () => '<main class="main"></main>';
+const createMainTemplate = () => '<main class="main"></main>';
 
 export default class MainView {
-  gerTemplate() {
-    return movieTemplate();
+  getTemplate() {
+    return createMainTemplate();
   }
 
   getElement() {
     if(!this.element) {
-      this.element = createElement(this.gerTemplate());
+      this.element = createElement(this.getTemplate());
     }
 
     return this.element;

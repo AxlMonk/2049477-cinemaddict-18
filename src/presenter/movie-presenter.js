@@ -20,7 +20,10 @@ export default class MoviePresenter {
     render(new FilterView(), this.mainComponent.getElement());
 
     render(this.movieComponent, this.movieContainer);
-    render(new MovieCardListView(), this.movieComponent.getElement());
+
+    for (let i = 0; i < 5; i++) {
+      render(new MovieCardListView(), this.movieComponent.getElement());
+    }
     render(new TopMovieView(), this.movieComponent.getElement());
     render(new ShowMoreButtonView(), this.movieComponent.getElement());
   };
