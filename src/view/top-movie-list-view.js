@@ -1,15 +1,11 @@
 import { createElement } from '../render.js';
 
-const createMovieListTemplate = () =>
-  `
-    <section class="films-list">
-      <h2 class="films-list__title visually-hidden">All movies. Upcoming</h2>
-    </section>
-  `;
+const createTopMovieListTemplate = () => '<section class="films-list films-list--extra"></section>';
 
-export default class MovieCardListView {
+
+export default class TopMovieListView {
   getTemplate() {
-    return createMovieListTemplate();
+    return createTopMovieListTemplate();
   }
 
   getElement() {
@@ -24,3 +20,4 @@ export default class MovieCardListView {
     this.element = null;
   }
 }
+
