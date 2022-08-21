@@ -49,8 +49,8 @@ export default class MoviePresenter {
     for (let j = 0; j < 2; j++) {
       render(new TopMovieView(), this.topMovieListContainer.getElement());
     }
-    const comments = [...this.commentsModel.get(this.movies[0])];
 
+    const comments = [...this.commentsModel.get(this.movies[0])];
     render(new MovieDetailsView(this.movies[0], comments), this.movieContainer.parentElement);
   };
 }

@@ -5,14 +5,14 @@ import {
   NAME_COUNT, MAX_COMMENT_ON_FILM, GenreCount, Rating, RunTime,
   AgeRating, YearsDuration, names, surnames, titles, posters,
   genres, description, countries
-} from '../mock/const.js';
+} from './const.js';
 
 const generateMovie = () => ({
   title: getRandomValue(titles),
   alternativeTitle: getRandomValue(titles),
   totalRating: getRandomInteger(Rating.MIN, Rating.MAX),
   poster: getRandomValue(posters),
-  AgeRating: getRandomInteger(AgeRating.MIN, AgeRating.MAX),
+  ageRating: getRandomInteger(AgeRating.MIN, AgeRating.MAX),
   director: `${getRandomValue(names)} ${getRandomValue(surnames)}`,
   writers: Array.from({length: NAME_COUNT}, () => `${getRandomValue(names)} ${getRandomValue(surnames)}`),
   actors: Array.from({length: NAME_COUNT}, () => `${getRandomValue(names)} ${getRandomValue(surnames)}`),
@@ -25,7 +25,7 @@ const generateMovie = () => ({
   description
 });
 
-const generateMovies = () => {
+export const generateMovies = () => {
   const movies = Array.from({length: FILM_COUNT}, generateMovie);
 
   let totalCommentsCount = 0;
@@ -51,6 +51,3 @@ const generateMovies = () => {
   });
 };
 
-export {
-  generateMovies
-};

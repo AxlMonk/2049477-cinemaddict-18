@@ -14,7 +14,7 @@ const footerMovieElement = bodyElement.querySelector('.footer');
 const footerStatisticElement = footerMovieElement.querySelector('.footer__statistics');
 
 const moviesModel = new MoviesModel();
-const commentsModel = new CommentsModel();
+const commentsModel = new CommentsModel(moviesModel);
 
 const moviePresenter = new MoviePresenter();
 

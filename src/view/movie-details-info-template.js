@@ -18,7 +18,7 @@ const generateGenreList = (genres) =>
 export const createMovieDetailsInfoTemplate = (movieInfo) => {
   const {
     title, alternativeTitle, totalRating, poster, ageRating, director,
-    writers, actors, release, runtime, genre, description
+    writers, actors, release, runTime, genre, description
   } = movieInfo;
 
   return `
@@ -43,7 +43,7 @@ export const createMovieDetailsInfoTemplate = (movieInfo) => {
         <table class="film-details__table">
           <tr class="film-details__row">
             <td class="film-details__term">Director</td>
-            <td class="film-details__cell">${director}}</td>
+            <td class="film-details__cell">${director}</td>
           </tr>
           <tr class="film-details__row">
             <td class="film-details__term">Writers</td>
@@ -59,7 +59,7 @@ export const createMovieDetailsInfoTemplate = (movieInfo) => {
           </tr>
           <tr class="film-details__row">
             <td class="film-details__term">Runtime</td>
-            <td class="film-details__cell">${formatMinutesToTime(runtime)}</td>
+            <td class="film-details__cell">${formatMinutesToTime(runTime)}</td>
           </tr>
           <tr class="film-details__row">
             <td class="film-details__term">Country</td>
