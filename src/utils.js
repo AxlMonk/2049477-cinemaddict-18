@@ -28,6 +28,8 @@ const formatStringToYear = (date) =>
 const formatMinutesToTime = (minutes) =>
   dayjs.duration(minutes, 'minutes').format('H[h]  mm[m]');
 
+const isEscapeKey = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
 
 export {
   getRandomInteger,
@@ -35,7 +37,8 @@ export {
   formatStringToDateWithTime,
   formatStringToDate,
   formatStringToYear,
-  formatMinutesToTime
+  formatMinutesToTime,
+  isEscapeKey
 };
 
 

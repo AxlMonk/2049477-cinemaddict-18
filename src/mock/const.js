@@ -53,6 +53,10 @@ const surnames = [
 ];
 
 const titles = [
+  'Terminator',
+  'Hitman',
+  'Double Dragon',
+  'Blade',
   'Made For Each Other',
   'Popeye Meets Sinbad',
   'Sagerush Trail',

@@ -1,6 +1,6 @@
 import { createElement } from '../render.js';
 
-const createMovieNavigationTemplate = () =>
+const createMoviesFilterTemplate = () =>
   ` <nav class="main-navigation">
       <a href="#all" class="main-navigation__item main-navigation__item--active">
         All movies
@@ -17,20 +17,22 @@ const createMovieNavigationTemplate = () =>
     </nav>
   `;
 
-export default class MovieNavigationView {
-  getTemplate() {
-    return createMovieNavigationTemplate();
+export default class MoviesFilterView {
+  #element = null;
+
+  get template() {
+    return createMoviesFilterTemplate();
   }
 
-  getElement() {
-    if(!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if(!this.#element) {
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

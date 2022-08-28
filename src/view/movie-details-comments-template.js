@@ -1,7 +1,6 @@
 import { formatStringToDateWithTime } from '../utils';
 
-
-const createCommentTemplate = (...commentItem) => {
+const createCommentTemplate = ({...commentItem}) => {
 
   const {
     emotion, comment, author
