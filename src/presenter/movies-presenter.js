@@ -36,12 +36,6 @@ export default class MoviesPresenter {
 
   #renderdMovieCount = FILM_COUNT_PER_STEP;
 
-  // constructor(movieContainer, moviesModel, commentsModel) {
-  //   this.#movieContainer = movieContainer;
-  //   this.#moviesModel = moviesModel;
-  //   this.#commentsModel = commentsModel;
-  // }
-
 
   init = (movieContainer, moviesModel, commentsModel) => {
 
@@ -50,8 +44,6 @@ export default class MoviesPresenter {
     this.#commentsModel = commentsModel;
 
     this.#movies = [...this.#moviesModel.movies];
-
-    // this.#renderMovieBoard();
 
     // *****  Отрисовываем основной список фильмов ***** //
 
