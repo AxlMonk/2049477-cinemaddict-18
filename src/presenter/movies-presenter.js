@@ -12,8 +12,10 @@ import MovieCommentedListContainerView from '../view/movie-most-commented-view/m
 import MovieMostCommentedCardView from '../view/movie-most-commented-view/movie-most-commented-card-view.js';
 import MovieDetailsView from '../view/movie-details-view.js';
 import { render } from '../render.js';
-import { TOP_FILM_COUNT, MOST_COMMENTED_FILM_COUNT, FILM_COUNT_PER_STEP} from '../const.js';
+import { TOP_MOVIE_COUNT, MOST_COMMENTED_MOVIE_COUNT } from '../const.js';
 import { isEscapeKey } from '../utils.js';
+
+const MOVIE_COUNT_PER_STEP = 5;
 
 export default class MoviesPresenter {
   #sortComponent = new SortView();
@@ -34,15 +36,16 @@ export default class MoviesPresenter {
 
   #movies = [];
 
-  #renderdMovieCount = FILM_COUNT_PER_STEP;
+  #renderedMovieCount = MOVIE_COUNT_PER_STEP;
 
-
-  init = (movieContainer, moviesModel, commentsModel) => {
-
+  constructor(movieContainer, moviesModel, commentsModel) {
     this.#movieContainer = movieContainer;
     this.#moviesModel = moviesModel;
     this.#commentsModel = commentsModel;
+  }
 
+
+  init = () => {
     this.#movies = [...this.#moviesModel.movies];
 
     // *****  Отрисовываем основной список фильмов ***** //
@@ -52,12 +55,15 @@ export default class MoviesPresenter {
     render(this.#movieListComponent, this.#moviesComponent.element);
     render(this.#movieListContainerComponent, this.#movieListComponent.element);
 
-    this.#movies.forEach((movie) => {
-      this.#renderMovie(movie, this.#movieListContainerComponent);
-    });
 
-    if (this.#movies.length >= this.#renderdMovieCount) {
+    for (let i = 0; i < Math.min(this.#movies.length, MOVIE_COUNT_PER_STEP); i++) {
+      this.#renderMovie(this.#movies[i], this.#movieListContainerComponent);
+    }
+
+    if (this.#movies.length > MOVIE_COUNT_PER_STEP) {
       render(this.#movieButtonMoreComponent, this.#movieListComponent.element);
+
+      this.#movieButtonMoreComponent.element.addEventListener('click', this.#movieButtonClickHandler);
     }
 
     // *****  Отрисовываем список топ - фильмов ***** //
@@ -65,7 +71,7 @@ export default class MoviesPresenter {
     render(this.#movieTopListComponent, this.#moviesComponent.element);
     render(this.#movieTopListContainerComponent, this.#movieTopListComponent.element);
 
-    for (let i = 0; i < TOP_FILM_COUNT; i++) {
+    for (let i = 0; i < TOP_MOVIE_COUNT; i++) {
       render(new MovieTopCardView(), this.#movieTopListContainerComponent.element);
     }
 
@@ -74,7 +80,7 @@ export default class MoviesPresenter {
     render(this.#movieMostCommentedListComponent, this.#moviesComponent.element);
     render(this.#movieMostCommetedContainerComponent, this.#movieMostCommentedListComponent.element);
 
-    for (let i = 0; i < MOST_COMMENTED_FILM_COUNT; i++) {
+    for (let i = 0; i < MOST_COMMENTED_MOVIE_COUNT; i++) {
       render(new MovieMostCommentedCardView(), this.#movieMostCommetedContainerComponent.element);
     }
   };
@@ -125,5 +131,21 @@ export default class MoviesPresenter {
       document.removeEventListener('keydown', this.#onEscKeyDown);
     }
   };
-}
 
+  #movieButtonClickHandler(evt) {
+    evt.preventDefault();
+
+    this.#movies
+      .slice(this.#renderedMovieCount, this.#renderedMovieCount + MOVIE_COUNT_PER_STEP)
+      .forEach((movie) => {
+        this.#renderMovie(movie, this.#movieListContainerComponent);
+      });
+
+    this.#renderedMovieCount += MOVIE_COUNT_PER_STEP;
+
+    if (this.#renderedMovieCount >= this.#movies.length) {
+      this.#movieButtonMoreComponent.element.remove();
+      this.#movieButtonMoreComponent.removeElement();
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { getRandomInteger, getRandomValue } from '../utils.js';
-import { FILM_COUNT } from '../const.js';
+import { MOVIE_COUNT } from '../const.js';
 import {
   NAME_COUNT, MAX_COMMENT_ON_FILM, GenreCount, Rating, RunTime,
   AgeRating, YearsDuration, names, surnames, titles, posters,
@@ -26,7 +26,7 @@ const generateMovie = () => ({
 });
 
 export const generateMovies = () => {
-  const movies = Array.from({length: FILM_COUNT}, generateMovie);
+  const movies = Array.from({length: MOVIE_COUNT}, generateMovie);
 
   let totalCommentsCount = 0;
 
