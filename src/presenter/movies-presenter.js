@@ -63,7 +63,7 @@ export default class MoviesPresenter {
     if (this.#movies.length > MOVIE_COUNT_PER_STEP) {
       render(this.#movieButtonMoreComponent, this.#movieListComponent.element);
 
-      this.#movieButtonMoreComponent.element.addEventListener('click', this.#movieButtonClickHandler);
+      this.#movieButtonMoreComponent.element.addEventListener('click',this.#movieButtonClickHandler);
     }
 
     // *****  Отрисовываем список топ - фильмов ***** //
@@ -132,7 +132,7 @@ export default class MoviesPresenter {
     }
   };
 
-  #movieButtonClickHandler(evt) {
+  #movieButtonClickHandler = (evt) => {
     evt.preventDefault();
 
     this.#movies
@@ -147,5 +147,5 @@ export default class MoviesPresenter {
       this.#movieButtonMoreComponent.element.remove();
       this.#movieButtonMoreComponent.removeElement();
     }
-  }
+  };
 }
