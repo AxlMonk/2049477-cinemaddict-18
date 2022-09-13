@@ -1,4 +1,4 @@
-import { createElement } from '../../render.js';
+import AbstractView from '../../framework/view/abstract-view.js';
 
 const createMovieCommentedCardTemplate = () =>
   `
@@ -23,27 +23,15 @@ const createMovieCommentedCardTemplate = () =>
     </article>
   `;
 
-export default class MovieMostCommentedCardView {
-  #element = null;
+export default class MovieMostCommentedCardView extends AbstractView {
   #movie = null;
 
   constructor(movie) {
+    super();
     this.#movie = movie;
   }
 
   get template() {
     return createMovieCommentedCardTemplate(this.#movie);
-  }
-
-  get element() {
-    if(!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }

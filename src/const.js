@@ -1,4 +1,4 @@
-const MOVIE_COUNT = 10;
+const MOVIE_COUNT = 16;
 
 const TOP_MOVIE_COUNT = 2;
 
